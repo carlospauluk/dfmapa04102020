@@ -1,17 +1,13 @@
 package com.trabalho.dfmapa04102020;
 
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Daniel F
  */
 public class PainelFrame extends javax.swing.JFrame {
 
-    private List<Senha> fila = new ArrayList<Senha>();
-    
+    private Painel painel;
+
     /**
      * Creates new form PainelFrame
      */
@@ -28,8 +24,12 @@ public class PainelFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnTopo = new javax.swing.JPanel();
         lbProximaSenha = new javax.swing.JLabel();
         lbProximoCaixa = new javax.swing.JLabel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         pnClientes = new javax.swing.JPanel();
         lbEscolhaTipoAtendimento = new javax.swing.JLabel();
         btnComum = new javax.swing.JButton();
@@ -48,11 +48,70 @@ public class PainelFrame extends javax.swing.JFrame {
 
         lbProximaSenha.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         lbProximaSenha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbProximaSenha.setText("P-5");
+        lbProximaSenha.setText("Próxima Senha");
 
         lbProximoCaixa.setFont(new java.awt.Font("Ubuntu", 2, 36)); // NOI18N
         lbProximoCaixa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbProximoCaixa.setText("Caixa 1");
+        lbProximoCaixa.setText("Próximo Caixa");
+
+        jInternalFrame1.setVisible(false);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(21, Short.MAX_VALUE)))
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1)
+                    .addContainerGap()))
+        );
+
+        javax.swing.GroupLayout pnTopoLayout = new javax.swing.GroupLayout(pnTopo);
+        pnTopo.setLayout(pnTopoLayout);
+        pnTopoLayout.setHorizontalGroup(
+            pnTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTopoLayout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(lbProximaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                .addGap(93, 93, 93)
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(pnTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTopoLayout.createSequentialGroup()
+                    .addContainerGap(58, Short.MAX_VALUE)
+                    .addComponent(lbProximoCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(38, 38, 38)))
+        );
+        pnTopoLayout.setVerticalGroup(
+            pnTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTopoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbProximaSenha)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(pnTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnTopoLayout.createSequentialGroup()
+                    .addGap(97, 97, 97)
+                    .addComponent(lbProximoCaixa)
+                    .addContainerGap(134, Short.MAX_VALUE)))
+        );
 
         pnClientes.setBorder(javax.swing.BorderFactory.createTitledBorder("Para clientes"));
         pnClientes.setName("pnClientes"); // NOI18N
@@ -69,8 +128,13 @@ public class PainelFrame extends javax.swing.JFrame {
         });
 
         btnRapido.setText("Rápido");
+        btnRapido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRapidoActionPerformed(evt);
+            }
+        });
 
-        btnPrioritario.setText("Prioritário");
+        btnPrioritario.setText("Preferencial");
         btnPrioritario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrioritarioActionPerformed(evt);
@@ -83,7 +147,6 @@ public class PainelFrame extends javax.swing.JFrame {
         txtSuaSenha.setEditable(false);
         txtSuaSenha.setFont(new java.awt.Font("Ubuntu", 1, 13)); // NOI18N
         txtSuaSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSuaSenha.setText("P-6");
 
         javax.swing.GroupLayout pnClientesLayout = new javax.swing.GroupLayout(pnClientes);
         pnClientes.setLayout(pnClientesLayout);
@@ -100,7 +163,7 @@ public class PainelFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnClientesLayout.createSequentialGroup()
                         .addComponent(btnComum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addComponent(btnRapido)
                         .addGap(53, 53, 53)
                         .addComponent(btnPrioritario)))
@@ -111,7 +174,7 @@ public class PainelFrame extends javax.swing.JFrame {
             .addGroup(pnClientesLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lbEscolhaTipoAtendimento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(pnClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRapido)
                     .addComponent(btnComum)
@@ -127,6 +190,11 @@ public class PainelFrame extends javax.swing.JFrame {
         pnCaixas.setPreferredSize(new java.awt.Dimension(258, 178));
 
         btnCaixa1.setText("Caixa 1");
+        btnCaixa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaixa1ActionPerformed(evt);
+            }
+        });
 
         btnCaixa2.setText("Caixa 2");
         btnCaixa2.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +204,11 @@ public class PainelFrame extends javax.swing.JFrame {
         });
 
         btnCaixa3.setText("Caixa 3");
+        btnCaixa3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaixa3ActionPerformed(evt);
+            }
+        });
 
         btnCaixa4.setText("Caixa 4");
         btnCaixa4.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +226,7 @@ public class PainelFrame extends javax.swing.JFrame {
                 .addGroup(pnCaixasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCaixa1)
                     .addComponent(btnCaixa3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                 .addGroup(pnCaixasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCaixa2)
                     .addComponent(btnCaixa4))
@@ -166,7 +239,7 @@ public class PainelFrame extends javax.swing.JFrame {
                 .addGroup(pnCaixasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCaixa1)
                     .addComponent(btnCaixa2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(pnCaixasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCaixa3)
                     .addComponent(btnCaixa4))
@@ -177,35 +250,32 @@ public class PainelFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbProximaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbProximoCaixa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(pnCaixas, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pnCaixas, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnTopo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(22, 22, 22)
                     .addComponent(pnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(384, Short.MAX_VALUE)))
+                    .addContainerGap(396, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(lbProximaSenha)
-                .addGap(37, 37, 37)
-                .addComponent(lbProximoCaixa)
-                .addGap(35, 35, 35)
-                .addComponent(pnCaixas, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(pnTopo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnCaixas, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(198, 198, 198)
-                    .addComponent(pnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addContainerGap(300, Short.MAX_VALUE)
+                    .addComponent(pnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 
@@ -213,22 +283,67 @@ public class PainelFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrioritarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrioritarioActionPerformed
-        // TODO add your handling code here:
+        Senha senhaGerada = this.getPainel().adicionarSenhaNaFila('P');
+        txtSuaSenha.setText(senhaGerada.getSenhaTxt());
+        this.printTodasAsSenhas();
     }//GEN-LAST:event_btnPrioritarioActionPerformed
 
+    private void btnComumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComumActionPerformed
+        Senha senhaGerada = this.getPainel().adicionarSenhaNaFila('C');
+        txtSuaSenha.setText(senhaGerada.getSenhaTxt());
+        this.printTodasAsSenhas();
+    }//GEN-LAST:event_btnComumActionPerformed
+
+    private void btnRapidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRapidoActionPerformed
+        Senha senhaGerada = this.getPainel().adicionarSenhaNaFila('R');
+        txtSuaSenha.setText(senhaGerada.getSenhaTxt());
+        this.printTodasAsSenhas();
+    }//GEN-LAST:event_btnRapidoActionPerformed
+
+
+    private void btnCaixa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaixa1ActionPerformed
+        String atendimento = this.getPainel().atender('P');
+        if (atendimento != null) {
+            this.lbProximoCaixa.setText("Caixa 1");
+            this.lbProximaSenha.setText(atendimento);
+        }
+        this.printTodasAsSenhas();
+    }//GEN-LAST:event_btnCaixa1ActionPerformed
+
     private void btnCaixa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaixa2ActionPerformed
-        // TODO add your handling code here:
+        String atendimento = this.getPainel().atender('R');
+        if (atendimento != null) {
+            this.lbProximoCaixa.setText("Caixa 2");
+            this.lbProximaSenha.setText(atendimento);
+        }
+        this.printTodasAsSenhas();
     }//GEN-LAST:event_btnCaixa2ActionPerformed
 
+    private void btnCaixa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaixa3ActionPerformed
+        String atendimento = this.getPainel().atender('R');
+        if (atendimento != null) {
+            this.lbProximoCaixa.setText("Caixa 3");
+            this.lbProximaSenha.setText(atendimento);
+        }
+        this.printTodasAsSenhas();
+    }//GEN-LAST:event_btnCaixa3ActionPerformed
+
     private void btnCaixa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaixa4ActionPerformed
-        // TODO add your handling code here:
+        String atendimento = this.getPainel().atender('C');
+        if (atendimento != null) {
+            this.lbProximoCaixa.setText("Caixa 4");
+            this.lbProximaSenha.setText(atendimento);
+        }
+        this.printTodasAsSenhas();
     }//GEN-LAST:event_btnCaixa4ActionPerformed
 
-    private void btnComumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComumActionPerformed
-        Senha senhaComum = new Senha(1, 'C');
-        this.getFila().add(senhaComum);
-        JOptionPane.showMessageDialog(this, "Na fila: " + this.getFila().size());
-    }//GEN-LAST:event_btnComumActionPerformed
+    private void printTodasAsSenhas() {
+        this.jTextArea1.setText("");
+        for (Senha senha : this.getPainel().getFila()) {
+            this.jTextArea1.append(senha.getSenhaTxt() + '\r' + '\n');
+        }
+
+    }
 
     /**
      * @param args the command line arguments
@@ -257,37 +372,21 @@ public class PainelFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-               
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PainelFrame painelFrame = new PainelFrame();
-                painelFrame.setFila(new ArrayList<Senha>());
-                painelFrame.setVisible(true);
+                new PainelFrame().setVisible(true);
             }
         });
     }
 
-    public List<Senha> getFila() {
-        return fila;
+    public Painel getPainel() {
+        if (this.painel == null) {
+            this.painel = new Painel();
+        }
+        return painel;
     }
 
-    public void setFila(List<Senha> fila) {
-        this.fila = fila;
-    }
-    
-    
-    
-    
-    private void adicionarSenhaNaFila(Senha senha) {
-        this.getFila().add(senha);
-    }
-    
-    private void atender(int caixa) {
-        
-    }
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCaixa1;
@@ -297,12 +396,16 @@ public class PainelFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnComum;
     private javax.swing.JButton btnPrioritario;
     private javax.swing.JButton btnRapido;
+    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbEscolhaTipoAtendimento;
     private javax.swing.JLabel lbProximaSenha;
     private javax.swing.JLabel lbProximoCaixa;
     private javax.swing.JLabel lbSuaSenha;
     private javax.swing.JPanel pnCaixas;
     private javax.swing.JPanel pnClientes;
+    private javax.swing.JPanel pnTopo;
     private javax.swing.JTextField txtSuaSenha;
     // End of variables declaration//GEN-END:variables
 }

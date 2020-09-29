@@ -31,6 +31,10 @@ public class Senha {
         this.tipo = tipo;
     }
     
+    public String getSenhaTxt() {
+        return this.tipo + "-" + this.numero;
+    }
+    
     
     
     
